@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from "react";
+import { getCourses } from "../api/courseApi";
+import CourseList from "./CourseList";
+function CoursesPage() {
+	const [courses, setCourses] = useState([]);
+
+	useEffect(() => {
+		// Get courses from the API.
+		// When the call completes, store the array of courses in state
+
+		getCourses().then(_courses => setCourses(_courses));
+	}, []);
+
+	return (
+		<>
+			<h2>CoursesPage</h2>
+			<CourseList courses={courses} />
+		</>
+	);
+}
+
+export default CoursesPage;
